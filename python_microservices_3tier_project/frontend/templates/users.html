@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Users - Microservices Demo{% endblock %}
+
+{% block content %}
+<h1>👥 User Management</h1>
+<p style="color: #666; margin-bottom: 20px;">Manage users in the system</p>
+
+<div class="section">
+    <h2>Add New User</h2>
+    <form method="post" action="/users" class="form-group">
+        <input type="text" name="name" placeholder="Enter user name" required autofocus>
+        <button type="submit">Add User</button>
+    </form>
+</div>
+
+<div class="section">
+    <h2>Users List ({{ users|length }})</h2>
+    {% if users %}
+        <ul class="items-list">
+            {% for user in users %}
+                <li>
+                    <strong>{{ user }}</strong>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="empty-message">No users found. Add one to get started!</div>
+    {% endif %}
+</div>
+{% endblock %}

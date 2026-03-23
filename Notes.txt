@@ -1,0 +1,78 @@
+Docker
+KUBERNET        yaml 
+Github Action -- Cerification -- Security
+Gen AI 
+
+
+
+1.  The program stops working while running a task. Find the reason from the error log
+2.  Extract the WARNING from continous log generation while running a program
+3.  Zip the error logs and save it in network
+4.  Check for availabe resources in the system and it matches the requirements to run a program
+5.  Setup an automated document check for vulnerabilities
+6.  Put the processes that are not in use to sleep
+7.  Read the head of the file to find the process location
+8.  Reallocate resources based on the priority of the process
+9.  Reallocate resources based on current usage of process
+10. 
+
+
+
+i-0aca274716864eff7 (clouduser06)
+PublicIPs: 13.201.0.91    PrivateIPs: 172.31.36.12               
+
+
+sudo apt update -y
+
+sudo apt upgrade -y
+
+sudo apt install nginx -y 
+
+sudo apt install unzip -y 
+
+
+
+root@ip-172-31-36-24:/home/ubuntu/order_service# docker run -d   --name orderscon   --network test   -p 5003:5003   -e MYSQL_HOST='appdb'   -e MYSQL_PORT='3306'   -e MYSQL_DATABASE='appdb'   -e MYSQL_USER='appuser'   -e MYSQL_PASSWORD='apppassword'   ordersimg
+af873978eca6dc639e250938e7287699fb8f6910af6b632215123ce274a51e16
+root@ip-172-31-36-24:/home/ubuntu/order_service# 
+
+
+
+orderscon
+root@ip-172-31-36-24:/home/ubuntu/order_service# docker rm orderscon
+orderscon
+root@ip-172-31-36-24:/home/ubuntu/order_service# docker run -d   --name orderscon   --network test   -p 5003:5003   -e MYSQL_HOST='appdb'   -e MYSQL_PORT='3306'   -e MYSQL_DATABASE='appdb'   -e MYSQL_USER='appuser'   -e MYSQL_PASSWORD='apppassword'   ordersimg
+af873978eca6dc639e250938e7287699fb8f6910af6b632215123ce274a51e16
+root@ip-172-31-36-24:/home/ubuntu/order_service# docker run -d   --name appdb   --network test   -p 3306:3306   -e MYSQL_ROOT_PASSWORD='rootpassword'   -e MYSQL_DATABASE='appdb'   -e MYSQL_USER='appuser'   -e MYSQL_PASSWORD='apppassword'   -v appdb_data:/var/lib/mysql   docker.io/library/mysql:8.0^C
+root@ip-172-31-36-24:/home/ubuntu/order_service# 
+
+
+
+
+orderscon
+root@ip-172-31-36-24:/home/ubuntu/order_service# docker run -d   --name orderscon   --network test   -p 5003:5003   -e MYSQL_HOST='appdb'   -e MYSQL_PORT='3306'   -e MYSQL_DATABASE='appdb'   -e MYSQL_USER='appuser'   -e MYSQL_PASSWORD='apppassword'   ordersimg
+af873978eca6dc639e250938e7287699fb8f6910af6b632215123ce274a51e16
+root@ip-172-31-36-24:/home/ubuntu/order_service# docker run -d   --name appdb   --network test   -p 3306:3306   -e MYSQL_ROOT_PASSWORD='rootpassword'   -e MYSQL_DATABASE='appdb'   -e MYSQL_USER='appuser'   -e MYSQL_PASSWORD='apppassword'   -v appdb_data:/var/lib/mysql   docker.io/library/mysql:8.0^C
+root@ip-172-31-36-24:/home/ubuntu/order_service# docker pull docker.io/library/mysql:8.0
+
+Successfully tagged userimg:latest
+root@ip-172-31-36-24:/home/ubuntu/user_service# docker run -d --name usercon --network test -p 5001:5001 -e MYSQL_HOST='appdb' -e MYSQL_PORT='3306' -e MYSQL_DATABASE='appdb' -e MYSQL_USER='appuser' -e MYSQL_PASSWORD='apppassword' userimg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+docker stop -t 10s <container_name>
+docker kill -s SIGTERM <container_name>

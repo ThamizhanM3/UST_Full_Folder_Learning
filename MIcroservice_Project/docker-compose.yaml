@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  service1:
+    build: ./service1
+    ports:
+      - "5000:5000"
+
+  service2:
+    build: ./service2
+    ports:
+      - "5001:5001"
+
+  service3:
+    build: ./service3
+    ports:
+      - "5002:5002"
+
+  service4:
+    build: ./service4
+    ports:
+      - "5003:5003"
+
+  service5:
+    build: ./service5
+    ports:
+      - "5004:5004"

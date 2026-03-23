@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Microservices Demo{% endblock %}
+
+{% block content %}
+<h1>📊 Dashboard</h1>
+<p style="color: #666; margin-bottom: 20px;">Welcome to the Microservices Demo Application</p>
+
+<div class="dashboard-grid">
+    <div class="stat-card">
+        <h3>Total Users</h3>
+        <div class="number">{{ users|length }}</div>
+    </div>
+    <div class="stat-card">
+        <h3>Total Products</h3>
+        <div class="number">{{ products|length }}</div>
+    </div>
+    <div class="stat-card">
+        <h3>Total Orders</h3>
+        <div class="number">{{ orders|length }}</div>
+    </div>
+</div>
+
+<div class="section" style="margin-top: 40px;">
+    <h2>📝 Quick Overview</h2>
+    <p style="color: #666; line-height: 1.6;">
+        This application demonstrates a microservices architecture with separate services for:
+    </p>
+    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+        <li><strong>User Service:</strong> Manages user accounts and profiles</li>
+        <li><strong>Product Service:</strong> Handles product catalog and inventory</li>
+        <li><strong>Order Service:</strong> Processes and tracks customer orders</li>
+        <li><strong>Payment Service:</strong> Handles payment processing</li>
+        <li><strong>Shipping Service:</strong> Manages order shipping and logistics</li>
+        <li><strong>Notification Service:</strong> Sends notifications and alerts</li>
+        <li><strong>Inventory Service:</strong> Tracks stock levels</li>
+    </ul>
+    <p style="color: #666; margin-top: 20px;">
+        Use the navigation menu above to manage users, products, and orders across different services.
+    </p>
+</div>
+{% endblock %}

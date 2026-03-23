@@ -1,0 +1,82 @@
+bankingApplication:
+  name: myBank
+  ifscCode: KN8B0001234
+  version: 1.0.0
+  location: Trivandrum, Kerala
+  employees:
+    - name:
+        firstName: Sanga
+        lastName: Thamizhan
+      position: Software Engineer
+      department:
+        - name: IT
+          location: 
+            state: Kerala
+            city: Trivandrum
+          id: D001
+    - name:
+        firstName: Yashwanth
+        lastName: Reddy
+      position: Product Manager
+      department:
+        - name: Product
+          location:
+            state: Kerala
+            city: kochi
+          id: D002
+  funds:
+    - accountNumber: 123456789
+      accountId: A001
+      balance: 10000
+      currency: Rs
+    - accountNumber: 987654321
+      accountId: A002
+      balance: 5000
+      currency: USD
+  transactions:
+    - transactionId: T001
+      amount: 1000
+      type: deposit
+      date: 
+        year: 2024
+        month: 1
+        day: 15
+    - transactionId: T002
+      amount: 500
+      type: withdrawal
+      date:
+        year: 2024
+        month: 2
+        day: 20
+  customers:
+    - customerId: C001
+      name:
+        firstName: Johann
+        lastName: Aby
+      contact:
+        phone: 9876543210
+        email: johann@gmail.com
+    - customerId: C002
+      name: 
+        firstName: Gokul
+        lastName: Kumar
+      contact:
+        phone: 9876543211
+        email: gmail@gokul.com
+  accounts:
+    - accountId: A001
+      customerId: C001
+      accountType: savings
+    - accountId: A002
+      customerId: C002
+      accountType: current
+  cards:
+    - cardId: CR001
+      accountId: A001
+      cardType: debit
+      expiryDate: 2025-12-31
+    - cardId: CR002
+      accountId: A002
+      cardType: credit
+      expiryDate: 2026-06-30
+  

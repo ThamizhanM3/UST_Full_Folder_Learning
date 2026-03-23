@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Orders - Microservices Demo{% endblock %}
+
+{% block content %}
+<h1>🛒 Order Management</h1>
+<p style="color: #666; margin-bottom: 20px;">Manage orders in the system</p>
+
+<div class="section">
+    <h2>Create New Order</h2>
+    <form method="post" action="/orders" class="form-group">
+        <input type="text" name="name" placeholder="Enter order details" required autofocus>
+        <button type="submit">Create Order</button>
+    </form>
+</div>
+
+<div class="section">
+    <h2>Orders List ({{ orders|length }})</h2>
+    {% if orders %}
+        <ul class="items-list">
+            {% for order in orders %}
+                <li>
+                    <strong>{{ order }}</strong>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="empty-message">No orders found. Create one to get started!</div>
+    {% endif %}
+</div>
+{% endblock %}

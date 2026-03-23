@@ -1,0 +1,671 @@
+VPC -  Virtual Private Cloud -- AWS 
+EBS - Elastic Block Storage
+
+3 Levels of storage -- Block, , File
+
+
+Stack
+    Application
+    Data
+    Runtime
+    Middleware
+    OS
+    Virtualization
+    Server
+    Storage 
+    Network 
+    Physical
+
+Mavern, gradle, ANT, NPM 
+
+
+
+21-02-2026
+
+    IP - identifier of a device
+    IPV4, IPV6
+
+    IPV4 - 32 bit -- xxx.xxx.xxx.xxx -4 octet / 32 bits / 4 bytes 
+
+    IP -- Network Part (bits) + Host Part (bits)
+    Class A, B, C, D, E 
+    D, E - Defence and research 
+
+    Class A -- Network bits (8) + host bits(24) 
+                10.0.0.0/8 ===      1 - 126
+                Default subnet mask : 255.0.0.0
+                Strats with -- 0
+
+    Class B -- Network bits (16) + host bits(16)
+                128.3.0.0/16 ===    128 - 191
+                Default subnet mask : 255.255.0.0
+                Strats with -- 10
+
+    Class C -- Network bits (24) + host bits (8)
+                192.168.3.0/24 ===  192 - 223
+                Default subnet mask : 255.255.255.0
+                Strats with -- 110
+
+
+    127 - loop back addess -- ping self
+
+
+
+    11110000
+    00101101
+
+
+
+    192.168.3.0/24
+
+
+    Steps in creating VPC:
+        Step 1: Create VPC ie VPC-UST with CIDR 192.168.3.0/24
+        Step 2: Create  UST-VPC-pubsubnet-A 
+                        192.168.3.0/25
+                        UST-VPC-prisubnet-B 
+                        192.168.3.128/25
+        Step 3: Create Route Table ie pub-RT-A
+                Create Route Table ie pri-RT-B
+        Step 4: subnet Association 
+                    Go to Route Table pub-RT-A do subnet association UST-VPC-pubsubnet-A
+                    Go to Route Table pri-RT-B do subnet association UST-VPC-purisubnet-B
+        Step 5: 
+
+    I am a fresher who recently completed my Bachelor's of engineering degree in Computer Science and Engineering. Now I stared as an intern at MNC in devops. I currently am learning aws cloud. I need to explain about what i learnt to my senior. I learnt about EC2 instance, VPC, Security group, elastic IP, Rout table, Subnet, IPV4, IP Class A, B, C, D, E, 3 tier architecture, deployment, nginx, and more on. Help me explain it to him in IT terminology. 
+
+
+
+24/02/2026
+    NAT gateway -- Deploy private instance and access internet with NAT gateway
+    Rout table -- 
+    NACL || Security group -- Traffic type
+    High availability and Scalability
+        SCALING -- Vertical Scaling && Horizontal Scaling
+        Vertical :
+            increasing size of instance t2.small to t2.large
+        Horizontal:
+            increasing or decreasing no of instance
+        High availability -- links to horizontal Scaling 
+            runnig the application in minimum 2 or more availability zones
+            it is passive in nature in multiAZ
+            Scale out or scale in 
+        
+    Artifacting Importance
+        Dependancy issue -- Containerization
+    Load balancer -- Forward traffic to multiple servers
+        Uses:
+            Spread across multiple downstream instances
+            single point of access to the application 
+            handle failure of downstram instances 
+            health check to instances 
+            ssl termination
+            stickiness with cookies
+            high availability across zones
+            seperate public and private traffic 
+    Types of load balancer 
+        Application
+            HTTP Traffic , HTTPS, Web Socket
+        Network 
+            TCP Protocol Secure TCP 
+        Gateway
+            IP Protocol -- Network Layer
+    Load balancer -- Listener run routing
+    Target group - Group of instances to which the traffic is sent 
+
+LAN Graph
+LAN Chain
+LAN Queue
+Fast API
+
+168186
+
+27/02/2026
+    sudo apt install docker
+
+Image Management
+
+Build an image: docker build -t <image_name> .
+
+List images: docker images
+
+Remove an image: docker rmi <image_name>
+
+Pull an image from Docker Hub: docker pull <image_name>
+
+Push an image to Docker Hub: docker push <username>/<image_name>
+
+Prune unused images: docker image prune
+
+Container Management
+
+Run a container: docker run <image_name>
+
+Run a container with a custom name: docker run --name <container_name> <image_name>
+
+Run a container in detached mode: docker run -d <image_name>
+
+Map ports: docker run -p <host_port>:<container_port> <image_name>
+
+Start a container: docker start <container_name>
+
+Stop a container: docker stop <container_name>
+
+Remove a container: docker rm <container_name>
+
+List running containers: docker ps
+
+List all containers (including stopped): docker ps -a
+
+Inspecting and Debugging
+
+Inspect a container: docker inspect <container_name>
+
+View logs of a container: docker logs -f <container_name>
+
+Check resource usage: docker container stats
+
+View running processes in a container: docker container top <container_name>
+
+Interacting with Containers
+
+Execute a command in a running container: docker exec -it <container_name> <command>
+
+Open a shell inside a container: docker exec -it <container_name> sh
+
+System Cleanup
+
+Remove unused containers, images, and networks: docker system prune
+
+Remove all unused images: docker image prune -a
+
+Docker Compose
+
+Start services: docker-compose up
+
+Stop services: docker-compose down
+
+View running services: docker-compose ps
+
+
+02-03-2026
+    The moment a container is established in a host, a bridge network is established.
+    default and custom bridge network 
+        
+
+
+03-03-2026
+    Components of docker compose
+    '-' indicates list of values in yaml files
+        service:
+            backend:
+                image /
+                build /
+                port / 
+                network
+            frontend:
+            mysql:
+
+
+restart : always, none, on fail 
+
+
+
+07-03-2026
+    2 nodes --  control plane or worker plane 
+    pods are deployed in worker nodes 
+
+    cluster has 4 major components -- 
+        scheduler
+        cloud controller manager
+        etcd
+        controller manager
+
+    all communication happens through API server 
+
+    cri - container runtime interface 
+
+    kube proxy is for networking services 
+
+
+
+
+
+
+    Docker networking services  
+        IPAM -- IP Address Management - 
+            gives different IP Address to different containers. 
+            it is a feature of docker 
+        network drivers help communication
+            bridge network
+                it is default network
+                called as docker 0 
+                veth cable pairs
+                it is isolated
+            host - direct communication with host. 
+                max performance
+                minimal overhead
+                no isolation
+                no port mapping
+            none network
+                containernot connected to network
+                security max 
+            custom docker networks
+                provide
+                    network isolation 
+                    automatic DNS
+                    Security control
+                    Flecibilitu
+            docker compose 
+
+            daemon.json
+            var/run/docker/netns
+
+            IP Tables - security table -- manage rules
+            masqueride --> 
+            IPAM -->
+            in-memory database -->
+
+        
+
+    Container volumes
+        container are temproary
+        container storage is ephimeral
+
+        3 types of volumes
+            Anonymous volume 
+                stored in host location
+                random identity name 
+                data is not deleted even if container is deleted  -- persistance
+                it is the most simple time of volume -- simplicity
+                it is managed by docker 
+                it has no name. so reuse is difficuly
+                syntax --
+                    docker run -v /data:ro nginx ---> ro -> read only
+                    docker run -d -v /app/data nginx 
+                     -> volume name 99dh986fsgdy567yuh 
+                     -> docker volume inspect 99dh986fsgdy567yuh
+                     mount point -> /var/lib/docker/volume/99dh986fsgdy567yuh/_data
+                flag definitions
+                    :rw -> read write
+                        -> default
+                    :ro -> read only
+                    :Z  -> private 
+                    :z  -> public 
+                    :nocopy
+                mount flag
+                    docker run --mount type=volume, target=/data nginx
+                :rw, :ro, :Z, :z, :nocopy
+            
+            Named volumes
+                docker volume create myVolume
+                docker volume create --driver local myVolume
+                docker volume create --label env=dev myVolume
+                docker volume create --opt type=tmpfs myVolume
+
+                docker run -v myVolume:/data nginx
+                docker run -v myVolume:/data:ro nginx
+                docker run -v myVolume:/data:z nginx
+                docker run -v myVolume:/data:Z nginx
+
+                docker run --mount type=volume,source=myVolume,target=/data nginx
+
+                dangling/orphan volumes are not attached to any containers 
+
+                docker volume inspect myVolume
+
+            Bind mount 
+                docker run --mount type=bind,source=/host/path,target=/app nginx
+                docker run -v /host_path:container_path nginx 
+
+
+            tmpfs
+                temproary file storage
+                present inside host system
+                it is an in-memory filesystem
+                docker run -it --tmpfs /tmp nginx bash 
+                docker run --tmpfs /tmp:rw,size=100m,mode=1777 ubuntu 
+                docker run --mount type=tmpfs,destination=/tmp nginx 
+                docker run -it -tmpfs /temp:rw,nosuid,nodev,noexec,size=100m,uid=1000
+
+
+
+
+        host location -- /var/lib/docker/volime/
+
+
+09-03-2026
+
+    Docker recap
+        OCI is a set of standards for namespaces, cgroups, and other low-level components of containerization.
+        OCI provides specifications for container runtime and image format, ensuring interoperability across different container platforms.
+        Docker is a containerization platform that implements OCI standards
+
+        Components of image -- 
+            Base image -- OS layer
+            Application layer -- application and dependencies 
+            Runtime layer -- runtime environment for the application 
+            Configuration layer -- environment variables, command to run, etc.
+        
+        common instructions in Dockerfile -- 
+            FROM -- base image
+            RUN -- execute command during build time
+            CMD -- command to run when container starts
+            EXPOSE -- port to expose
+            ENV -- environment variables
+            WORKDIR -- working directory inside container
+            COPY -- copy files from host to container
+            VOLUME -- mount volume inside container
+        
+        common snapshotters
+            overlayfs
+            zfs'devnoapper
+
+        OCI Runtime specification -- 
+            it is a specification for container runtime, defining how containers should be run and managed. 
+            it provides a standard interface for container runtimes to interact with the underlying operating system. 
+            it ensures that containers can run consistently across different platforms and environments.
+
+        Namespace -- it is a feature of the Linux kernel that provides isolation for processes, network, and other resources. 
+            it allows multiple containers to run on the same host without interfering with each other. 
+            it provides a secure and isolated environment for each container.
+            there are different types of namespaces -- 
+                PID namespace -- process isolation
+                Network namespace -- network isolation
+                Mount namespace -- file system isolation
+                UTS namespace -- hostname isolation
+                IPC namespace -- inter-process communication isolation
+                User namespace -- user and group ID isolation
+
+            There are 7 types of namespaces in Linux:
+                PID namespace -- process isolation
+                Network namespace -- network isolation
+                Mount namespace -- file system isolation
+                UTS namespace -- hostname isolation
+                IPC namespace -- inter-process communication isolation
+                User namespace -- user and group ID isolation
+                Cgroup namespace -- control group isolation
+
+            UTS is a namespace the provides isolation by giving hostnames to containers.
+            unshare -u -i -p --forn -n -m -U -C --map-root-user --map-root-group 
+
+            cat /proc/cgroups -- control group information
+
+        Union file system -- 
+            it is a file system that allows multiple layers to be stacked on top of each other. 
+            it is used in containerization to create images and containers. 
+            it allows for efficient storage and sharing of files between containers.
+
+            
+
+
+
+    Kubernetes -- Container Orchestration tool 
+    It is an open source platform for automating deployment, scaling, and management of containerized applications. 
+    It was originally designed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF). 
+
+    Kubernetes provides a framework to run distributed systems resiliently. It takes care of scaling and failover for your application, provides deployment patterns, and more.
+
+    Kubernetes architecture -- 
+        Master Node -- Control Plane
+            API Server
+            Scheduler
+            Controller Manager
+            etcd
+
+        Worker Node -- Data Plane
+            Kubelet
+            Kube Proxy
+            Container Runtime (Docker, containerd, CRI-O)
+
+    API server 
+        It recieves all API requests that recieves from users, CLI, and other components
+        It validates authenticates and authorizes the request and then processes it.
+        It is the central management entity that exposes the Kubernetes API.
+        it acts as communication hub for all components in the cluster.
+        it is responsible for maintaining the desired state of the cluster by processing API requests and updating the cluster state accordingly.
+        all information is stored in etcd, and API server interacts with etcd to read and write cluster state information.
+
+    Controller Manager 
+        It is responsible for running controller processes that manage the state of the cluster. 
+        It ensures that the desired state of the cluster matches the actual state by monitoring the cluster and making necessary adjustments. 
+        It runs various controllers such as Node Controller, Replication Controller, Endpoints Controller, etc.
+
+    Node Controller 
+        It is responsible for monitoring the health of worker nodes and taking necessary actions if a node becomes unhealthy. 
+        It ensures that the desired number of nodes are available in the cluster and manages node lifecycle events such as adding or removing nodes.
+        It detects if node becomes unhealthy and takes necessary actions such as evicting pods from the node and marking it as unschedulable.
+        It also manages node lifecycle events such as adding or removing nodes from the cluster.
+        It marks nodes as not ready if they fail health checks and evict pods from unhealthy nodes to maintain cluster stability.
+        It handles pod eviction from unhealthy nodes to maintain cluster stability and ensure that applications continue to run smoothly.
+
+    Replicaset Controller 
+        It is responsible for ensuring that a specified number of replicas of a pod are running at any given time. 
+        It monitors the cluster and creates or deletes pods as necessary to maintain the desired number of replicas. 
+        It ensures that the application is highly available and can handle failures by automatically replacing failed pods.
+        It ensures that the desired number of pod replicas are running at all times by creating or deleting pods as necessary to maintain the specified remaddddplica count.
+        It monitors the cluster and takes necessary actions to maintain the desired state of the application, ensuring
+
+    Endpoint contoller manager
+        It is responsible for managing the endpoints of services in the cluster. 
+        It ensures that the endpoints are correctly configured and updated as necessary to allow communication between services and pods. 
+        It monitors the cluster and takes necessary actions to maintain the desired state of service endpoints, ensuring that applications can communicate effectively within the cluster.
+        Createoiny ye dame r 1points for services and updates them as necessary to ensure that services can communicate with the appropriate pods, maintaining the desired state of service endpoints in the cluster.
+
+    Kube Scheduler 
+        It is responsible for scheduling pods onto worker nodes based on resource availability and other constraints. 
+        It monitors the cluster and makes scheduling decisions to ensure that pods are placed on appropriate nodes to optimize resource utilization and meet application requirements.
+        It evaluates the resource requirements of pods and the available resources on worker nodes to make informed scheduling decisions, ensuring efficient utilization of cluster resources and optimal performance of applications.
+
+    Scheduling phases
+        1. Filtering -- it filters out nodes that do not meet the requirements of the pod, such as insufficient resources or incompatible hardware.
+        2. Scoring -- it assigns scores to the remaining nodes based on various factors such as resource availability, affinity/anti-affinity rules, and other constraints.
+        3. Binding -- it binds the pod to the selected node and updates the cluster state accordingly.
+
+    Scheduler 
+        It is the component that selects the most suitable worker node for a newly created pod to run on based on resource requirements and other constraints, ensuring efficient utilization of cluster resources and optimal performance of applications.
+        It watches for new pods that have no assigned node and selects the most suitable worker node for them to run on based on resource requirements and other constraints, ensuring efficient utilization of cluster resources and optimal performance of applications.
+        It identifies suitable worker nodes for newly created pods based on resource requirements and other constraints, ensuring efficient utilization of cluster resources and optimal performance of applications.
+        It evaluates CPU and memory availability on worker nodes to make informed scheduling decisions, ensuring that pods are placed on nodes that can meet their resource needs and maintain optimal performance of applications.
+        It also considers other factors such as affinity/anti-affinity rules, taints and tolerations, and other constraints to ensure that pods are scheduled on appropriate nodes that meet their requirements and maintain the desired state of the cluster.
+        Filter and rank nodes on scheduling policy.
+        Updates pod - node binding in API server.
+
+    ETCD
+        It is a distributed key-value store that is used to store the cluster state and configuration data of the kubernets cluster. 
+        It stores complete cluster state, pod information, services and enpoints information, and cluster configuration data.
+        It provides a reliable and consistent way to store and retrieve data across the cluster. 
+        It allows kubernetes components to read and write cluster state information through the API server, ensuring that the desired state of the cluster is maintained and that applications can run smoothly.
+        It is used by the API server to read and write cluster state information, ensuring that the desired state of the cluster is maintained.
+        It is a distributed key-value store that provides a reliable and consistent way to store and retrieve data across the cluster, ensuring that the desired state of the cluster is maintained and that applications can run smoothly.
+        It uses the Raft consensus algorithm to ensure data consistency and fault tolerance across the cluster, providing a reliable and resilient storage solution for Kubernetes cluster state and configuration data.
+        It never communicates directly with worker nodes; instead, it interacts with the API server to read and write cluster state information, ensuring that the desired state of the cluster is maintained and that applications can run smoothly.
+    
+    Kubelet
+        It is an agent that runs on each worker node and is responsible for managing the lifecycle of pods on that node. 
+        It communicates with the API server to receive instructions and updates about the desired state of the cluster, and it ensures that the actual state of the pods on the node matches the desired state.
+        It monitors the health of pods and takes necessary actions such as restarting failed containers or evicting unhealthy pods to maintain cluster stability and ensure that applications continue to run smoothly.
+        It also manages the resources allocated to pods on the node, ensuring that they have access to the necessary CPU, memory, and other resources to run effectively.
+        It is an agent that runs on each worker node and is responsible for managing the lifecycle of pods on that node, ensuring that the actual state of the pods matches the desired state as defined in the cluster configuration, and maintaining cluster stability by monitoring pod health and managing resources effectively.
+        It ensures that containers defined in pod specifications are running properly
+        It registers the worker node with the kubernetes cluster and reports the status of the node to the API server, ensuring that the cluster has accurate information about the available resources and can make informed scheduling decisions for pods.
+        It also monitors the health of pods and takes necessary actions such as restarting failed containers or evicting unhealthy pods to maintain cluster stability and ensure that applications continue to run smoothly, ensuring that the desired state of the cluster is maintained and that applications can run effectively.
+        It communicates with the API server to receive instructions and updates about the desired state of the cluster, ensuring that the actual state of the pods on the node matches the desired state as defined in the cluster configuration, and maintaining cluster stability by monitoring pod health and managing resources effectively.
+        It watches for pods assigned to its node and ensures that the containers defined in the pod specifications are running properly, maintaining cluster stability by monitoring pod health and managing resources effectively to ensure that applications can run smoothly.
+        It reads pod specifications from the API server and ensures that the containers defined in those specifications are running properly on the worker node, maintaining cluster stability by monitoring pod health and managing resources effectively to ensure that applications can run smoothly.
+        It pulls container images using container runtime
+        It starts containers inside pods
+        It monitors the health of pods and takes necessary actions such as restarting failed containers or evicting unhealthy pods to maintain cluster stability and ensure that applications continue to run smoothly, ensuring that the desired state of the cluster is maintained and that applications can run effectively.
+        It restarts the containers if they fail and evicts unhealthy pods to maintain cluster stability, ensuring that applications can run smoothly and that the desired state of the cluster is maintained.
+        It reports node and pod status to the control plane, ensuring that the cluster has accurate information about the available resources and can make informed scheduling decisions for pods, while also maintaining cluster stability by monitoring pod health and managing resources effectively to ensure that applications can run smoothly.
+    
+    Kube Proxy
+        It is a network proxy that runs on each worker node and is responsible for maintaining network rules
+        It manages service networking and route traffic to appropriate pods
+        It runs on every worker nodes and maintains network rules on the node to allow communication between pods and services, ensuring that applications can communicate effectively within the cluster.
+        It uses IP tables or IPVS to manage network rules and route traffic to appropriate pods based on service definitions, ensuring that applications can communicate effectively within the cluster while maintaining network security and performance.
+        It load balances traffic accross multiple pods
+        It enables communication between pods and services within the cluster, ensuring that applications can communicate effectively while maintaining network security and performance, and providing a reliable and efficient networking solution for Kubernetes clusters.
+        It updates network rules on worker nodes to allow communication between pods and services, ensuring that applications can communicate effectively within the cluster while maintaining network security and performance, and providing a reliable and efficient networking solution for Kubernetes clusters.
+
+    Container runtime
+        It is a software that is responsible for pulling container images and running containers on worker nodes.
+        It pulls container images from container registries and runs containers on worker nodes, ensuring that applications can run effectively within the cluster.
+        It creates container inside pods
+        It starts and stops the containers
+        It communicates with kubelet through CRI 
+    
+    Add-ons
+        Metrics Server
+        Core DNS
+        CNI - Container Network Interface
+    
+    Core DNS
+        It provides provides DNS resolution for services and pods within the cluster, allowing applications to discover and communicate with each other using DNS names instead of IP addresses, ensuring that applications can communicate effectively within the cluster while maintaining network security and performance.
+        It converts service names to IP addresses, allowing applications to discover and communicate with each other using DNS names instead of IP addresses, ensuring that applications can communicate effectively within the cluster while maintaining network security and performance.
+        It enables pod to service communication using DNS names, allowing applications to discover and communicate with each other using DNS names instead of IP addresses, ensuring that applications can communicate effectively within the cluster while maintaining network security and performance.
+    
+    Metric Server
+        It collects CPU nad memory usage metrics from nodes and pods in the cluster, providing resource usage information that can be used for monitoring and scaling applications effectively within the cluster.
+        It provides metrics to kubernetes APi
+        It enables HPA (Horizontal Pod Autoscaling)
+
+    CNI plugin
+        It provides networking between pods and assign IP address to pods, ensuring that applications can communicate effectively within the cluster while maintaining network security and performance.
+        It enables pod to pod communication and assigns IP addresses to pods, ensuring that applications can communicate effectively within the cluster while maintaining network security and performance, and providing a reliable and efficient networking solution for Kubernetes clusters.
+        It enables cross node networking
+        It creates virtual network interface between pods
+
+    Kops
+        in cloud 
+
+    Node Network
+    Pod Network
+    Service Network
+
+10-03-2026
+    Pod specification will always be container
+
+    Pod-- spec -
+        Container
+        metadata
+            name
+            labels
+
+
+    replica set -- spec -
+        replicas
+        selector
+        trmplate
+        metadata
+            name
+
+
+11-03-2026
+    if a cluster has 1 master node and many worker nodes, if the maste nodes fails, what will happens
+    if we have 3 master nodes, to what master node does the worker node connect to
+    place load balancer in front of the master node
+
+    what happens internally when the pod creates
+    pod life cycle
+    replica set
+    deployment
+
+    set image imperative command
+
+    kubectl rollout status deployment <deployment_name>
+    kubectl rollout history deployment <deployment_name>
+
+    create a deployment and check if it is running
+    update using rolling update and check in url and status and history
+    do a rollback and check if it is working
+    do an update in replica set
+
+12-03-2026
+    event driven architecture
+
+13-03-2026
+    NAT
+    switching
+    routing
+
+16-03-2026
+    1. Which pod is taking more memory
+    2. 
+
+17-03-2026
+    we create 2 volume and take one part od persistant volume.
+    we claim the volume called as pvc - persistant volume claim
+    in deployment, we mention the claims and mention in yaml files.
+    thsi si done in 2 ways -- static, dynamic.
+    the dynamic way is called storage class.
+
+    replication contoler does not support set based.
+
+    stateful appliacation store data and keep a tracking on it
+
+    a stateful set is a kubernetes controller used to run stateful application as a pod in kubernetes cluster
+    assign sticky identity - an origuinal identity to each pod
+    a new pod is created by cloning previous pod data
+    if the previous pod is in pending state, new pod will not be created
+    if u delete the pod, it will be deleted in reverse order of creation
+    volume is created in stateful application
+    
+    Empty dir
+        share data betwween containers in a pod
+        it is temproary storage
+        it exists as long as the pod is running
+
+    
+    Persistant volume
+        stores data in cloud
+        data is not stored in node
+        data is stored in a seperate storage
+
+        pvc is under namespace scope
+        data is stored in storage class
+
+        template:
+            PV -> capacity, accessMode, storageClassName, persistentVolumeReclaimPolicy, hostPath
+            PVC -> accessMode, storageClassName, resources
+
+        static pv storages
+            hoostpath
+            aws ebs
+            nfs
+            azure disk
+            gce persistent disk
+            azure file
+            cephfs rook-ceph
+            iscsi
+            fiber channel
+            local
+        
+        modes : read worte many
+        read write once -- mounted and accessed by a single node -- use case - database and read replicas
+        read only many -- mounted and accessed by many nodes
+        read write many -- mounted and accessed by many nodes
+
+        access mode defines how a volume can be mouned accross nodes.
+        mismatch will prevent pvc binding and block pod scheduling
+
+19-03-2026
+    Stateful Set
+        it manages the pod order of creation and deletion
+        it is used for stateful applications that require stable network identity and persistent storage
+        it provides stable network identity by assigning a unique hostname to each pod based on its ordinal index, ensuring that each pod can be reliably identified and accessed within the cluster, which is essential for stateful applications that require stable network identity.
+        it provides persistent storage by allowing each pod to have its own persistent volume claim, ensuring that data is preserved even if a pod is rescheduled or recreated, which is crucial for stateful applications that require data persistence.
+
+        mysql-0.mysql.default.svc.cluster.local -- default DNS name 
+
+
+23-03-2026
+    Implementation:
+        Stateful set:
+                1. pv.yaml -- static persistent volume
+                2. statefulset yml  -- database
+                3. create config maps, secrets
+                4. create service for database 
+
+            apply yaml files
+                

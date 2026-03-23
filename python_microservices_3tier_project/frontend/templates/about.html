@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}About - Microservices Demo{% endblock %}
+
+{% block content %}
+<h1>ℹ️ About This Application</h1>
+
+<div class="section">
+    <h2>Microservices Architecture</h2>
+    <p style="line-height: 1.8; color: #555;">
+        This application is built using a <strong>microservices architecture</strong>, where different services are 
+        independently deployed and communicate through APIs. This approach provides scalability, flexibility, and 
+        maintainability for large-scale applications.
+    </p>
+</div>
+
+<div class="section">
+    <h2>🔧 Core Services</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 5px; border-left: 4px solid #667eea;">
+            <h3 style="margin-bottom: 10px; color: #667eea;">User Service</h3>
+            <p style="font-size: 14px; color: #666;">Manages user accounts, authentication, and profile information</p>
+        </div>
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 5px; border-left: 4px solid #667eea;">
+            <h3 style="margin-bottom: 10px; color: #667eea;">Product Service</h3>
+            <p style="font-size: 14px; color: #666;">Handles product catalog, descriptions, and pricing</p>
+        </div>
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 5px; border-left: 4px solid #667eea;">
+            <h3 style="margin-bottom: 10px; color: #667eea;">Order Service</h3>
+            <p style="font-size: 14px; color: #666;">Processes orders and manages order status tracking</p>
+        </div>
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 5px; border-left: 4px solid #667eea;">
+            <h3 style="margin-bottom: 10px; color: #667eea;">Payment Service</h3>
+            <p style="font-size: 14px; color: #666;">Handles secure payment processing and transactions</p>
+        </div>
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 5px; border-left: 4px solid #667eea;">
+            <h3 style="margin-bottom: 10px; color: #667eea;">Shipping Service</h3>
+            <p style="font-size: 14px; color: #666;">Manages order fulfillment and logistics</p>
+        </div>
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 5px; border-left: 4px solid #667eea;">
+            <h3 style="margin-bottom: 10px; color: #667eea;">Inventory Service</h3>
+            <p style="font-size: 14px; color: #666;">Tracks stock levels and product availability</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>💡 Key Features</h2>
+    <ul style="margin-left: 20px; line-height: 2;">
+        <li>✅ Independent service deployment</li>
+        <li>✅ Scalable architecture</li>
+        <li>✅ Easy maintenance and updates</li>
+        <li>✅ Technology flexibility (polyglot)</li>
+        <li>✅ Fault isolation</li>
+        <li>✅ Team autonomy</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>🏗️ Technology Stack</h2>
+    <ul style="margin-left: 20px; line-height: 2;">
+        <li><strong>Frontend:</strong> Flask + Jinja2 Templates + HTML/CSS</li>
+        <li><strong>Services:</strong> Python + Flask</li>
+        <li><strong>Container:</strong> Docker & Docker Compose</li>
+        <li><strong>Communication:</strong> REST APIs (HTTP)</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>📖 Documentation</h2>
+    <p style="color: #666;">
+        For more information about this application, please check the README.md file in the project root directory.
+    </p>
+</div>
+{% endblock %}
